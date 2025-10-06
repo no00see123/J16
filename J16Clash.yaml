@@ -66,7 +66,7 @@ proxy-groups:
       - 🇭🇰 香港节点
       - 🇨🇳 台湾节点
       - 🌐 全球直连
-      - VLESS-10870          # 预留位，先占位不报红
+      #- VLESS-10870          # 预留位，先占位不报红
 
   # 地区分组
   - name: 🇺🇸 美国节点
@@ -119,49 +119,49 @@ proxy-groups:
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+   #   - VLESS-10870
       - 🌐 全球直连
 
   - name: Google
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+  #    - VLESS-10870
       - 🌐 全球直连
 
   - name: Crypto
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+#      - VLESS-10870
       - 🌐 全球直连
 
   - name: Twitter
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+ #     - VLESS-10870
       - 🌐 全球直连
 
   - name: Telegram
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+#      - VLESS-10870
       - 🌐 全球直连
 
   - name: YouTube
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+ #     - VLESS-10870
       - 🌐 全球直连
 
   - name: Discord
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+#      - VLESS-10870
       - 🌐 全球直连
 
   - name: 国内媒体
@@ -175,14 +175,14 @@ proxy-groups:
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+ #     - VLESS-10870
       - 🌐 全球直连
 
   - name: 奈飞
     type: select
     proxies:
       - 🚀 策略选择
-      - VLESS-10870
+ #     - VLESS-10870
       - 🌐 全球直连
 
   - name: 哔哩哔哩
@@ -220,3 +220,4 @@ rules:
   # 兜底
 
   - MATCH,🚀 策略选择
+
