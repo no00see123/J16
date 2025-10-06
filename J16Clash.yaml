@@ -1,518 +1,216 @@
-# Clash 配置文件
-# 来源：J16.conf 完整迁移
-# 生成时间：2025-10-07
-# 说明：完整还原 Quantumult X 配置结构，无删减
-
-mixed-port: 7890
+# ========== J16-Clash-Airport 2025-10-07 ==========
+# 原则：安全 快 DNS零泄漏；机场节点版，VLESS 位预留
+port: 7890
+socks-port: 7891
+mixed-port: 7892
+mode: Rule
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
 allow-lan: true
 bind-address: "*"
-mode: rule
-log-level: info
-external-controller: 127.0.0.1:9090
 
 dns:
   enable: true
+  listen: 0.0.0.0:1053
   ipv6: false
   default-nameserver:
     - 223.5.5.5
-    - 119.29.29.29
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  use-hosts: true
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+  fallback: []
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'localhost.sec.qq.com'
+    - "*.lan"
+    - "*.local"
+    - "+.msftncsi.com"
+    - "+.msftconnecttest.com"
 
-proxies:
-  -
-    name: '🇭🇰 套餐到期日期：2026-03-06'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 套餐重置日期：2025-10-08'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 订阅获取时间：2025-10-06 12:13'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4017
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4018
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4019
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4020
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4028
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4014
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4015
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4031
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4021
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4022
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4030
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4023
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4024
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4026
-    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
+tun:
+  enable: false                      # 若需 TUN 透明代理再开
+  stack: system
+  dns-hijack:
+    - 8.8.8.8:53
+    - 8.8.4.4:53
+  auto-route: true
+  auto-detect-interface: true
+  excluded-ip-range:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+    - 127.0.0.0/8
 
+# 1. 机场订阅（节点来源）
+proxy-providers:
+  Airport:
+    type: http
+    path: ./proxy-provider/airport.yaml
+    url: "https://bava8u2znaj6bdzzjnfb.wgetcloud.online/link/239615ef-90ba-3a9e-921d-534a371cdc41?target=clash"              # ←←← 你的 Clash 订阅链接
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 600
+    filter: ".*"                    # 先全要，后面分组再精细过滤
+
+# 2. 策略组
 proxy-groups:
-  - name: 🚀 节点选择
+  # 手动总开关
+  - name: 🚀 策略选择
     type: select
     proxies:
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
-      - DIRECT
+      - 🇺🇸 美国节点
+      - 🇸🇬 新加坡节点
+      - 🇯🇵 日本节点
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🌐 全球直连
+      - VLESS-10870          # 预留位，先占位不报红
 
-  - name: 📲 电报消息
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+  # 地区分组
+  - name: 🇺🇸 美国节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    filter: "美国|US|USA"
 
-  - name: 📹 油管视频
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+  - name: 🇸🇬 新加坡节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    filter: "新加坡|SG|Singapore"
 
-  - name: 🎥 奈飞视频
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+  - name: 🇯🇵 日本节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    filter: "日本|JP|Japan"
 
-  - name: 📺 哔哩哔哩
+  - name: 🇭🇰 香港节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    filter: "港|HK|Hong"
+
+  - name: 🇨🇳 台湾节点
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    filter: "台|TW|Taiwan"
+
+  - name: 🌐 全球直连
     type: select
     proxies:
       - DIRECT
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
 
-  - name: 🤖 ChatGPT
+  # 功能分组（尾部统一带「策略选择+自建+直连」）
+  - name: 人工智能
     type: select
     proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 📢 谷歌FCM
+  - name: Google
     type: select
     proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🛑 广告拦截
+  - name: Crypto
     type: select
     proxies:
-      - REJECT
-      - DIRECT
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🍃 应用净化
+  - name: Twitter
     type: select
     proxies:
-      - REJECT
-      - DIRECT
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 📹 TikTok
+  - name: Telegram
     type: select
     proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🤖 Claude
+  - name: YouTube
     type: select
     proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🤖 Gemini
+  - name: Discord
     type: select
     proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🤖 Copilot
+  - name: 国内媒体
     type: select
     proxies:
-      - 🚀 节点选择
-      - 🇭🇰 套餐到期日期：2026-03-06
-      - 🇭🇰 套餐重置日期：2025-10-08
-      - 🇭🇰 订阅获取时间：2025-10-06 12:13
-      - 🇭🇰 香港 01
-      - 🇭🇰 香港 02
-      - 🇭🇰 香港 03
-      - 🇨🇳 台湾 01
-      - 🇨🇳 台湾 02
-      - 🇨🇳 台湾 03
-      - 🇸🇬 新加坡 01
-      - 🇸🇬 新加坡 02
-      - 🇸🇬 新加坡 03
-      - 🇯🇵 日本 01
-      - 🇯🇵 日本 02
-      - 🇯🇵 日本 03
-      - 🇺🇲 美国 01
-      - 🇺🇲 美国 02
-      - 🇺🇲 美国 03
+      - 🌐 全球直连
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
 
-  - name: 🎯 全球直连
+  - name: 国外媒体
     type: select
     proxies:
-      - DIRECT
-      - 🚀 节点选择
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
-  - name: 🐟 漏网之鱼
+  - name: 奈飞
     type: select
     proxies:
-      - 🚀 节点选择
-      - DIRECT
+      - 🚀 策略选择
+      - VLESS-10870
+      - 🌐 全球直连
 
+  - name: 哔哩哔哩
+    type: select
+    proxies:
+      - 🌐 全球直连
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+
+# 3. 规则（顺序与你原配置一致）
 rules:
-  - DOMAIN-SUFFIX,t.me,📲 电报消息
-  - DOMAIN-SUFFIX,tdesktop.com,📲 电报消息
-  - DOMAIN-SUFFIX,telegra.ph,📲 电报消息
-  - DOMAIN-SUFFIX,telegram.me,📲 电报消息
-  - DOMAIN-SUFFIX,telegram.org,📲 电报消息
-  - DOMAIN-SUFFIX,telesco.pe,📲 电报消息
-  - IP-CIDR,91.108.0.0/16,📲 电报消息,no-resolve
-  - IP-CIDR,149.154.160.0/20,📲 电报消息,no-resolve
-  - DOMAIN-KEYWORD,youtube,📹 油管视频
-  - DOMAIN-SUFFIX,googlevideo.com,📹 油管视频
-  - DOMAIN-SUFFIX,youtube.com,📹 油管视频
-  - DOMAIN-SUFFIX,ytimg.com,📹 油管视频
-  - DOMAIN-SUFFIX,youtu.be,📹 油管视频
-  - DOMAIN-KEYWORD,dualstack.apiproxy-,🎥 奈飞视频
-  - DOMAIN-SUFFIX,netflix.com,🎥 奈飞视频
-  - DOMAIN-SUFFIX,nflxvideo.net,🎥 奈飞视频
-  - DOMAIN-SUFFIX,nflximg.com,🎥 奈飞视频
-  - DOMAIN-SUFFIX,fast.com,🎥 奈飞视频
-  - DOMAIN,p-bstarstatic.akamaized.net,📺 哔哩哔哩
-  - DOMAIN-SUFFIX,bilibili.com,📺 哔哩哔哩
-  - DOMAIN-SUFFIX,acgvideo.com,📺 哔哩哔哩
-  - DOMAIN-SUFFIX,b23.tv,📺 哔哩哔哩
-  - DOMAIN-SUFFIX,hdslb.com,📺 哔哩哔哩
-  - DOMAIN-KEYWORD,chatgpt,🤖 ChatGPT
-  - DOMAIN-SUFFIX,openai.com,🤖 ChatGPT
-  - DOMAIN-SUFFIX,chatgpt.com,🤖 ChatGPT
-  - DOMAIN-SUFFIX,oaiusercontent.com,🤖 ChatGPT
-  - DOMAIN-SUFFIX,oaistatic.com,🤖 ChatGPT
-  - DOMAIN,alt1-mtalk.google.com,📢 谷歌FCM
-  - DOMAIN,mtalk.google.com,📢 谷歌FCM
-  - IP-CIDR,64.233.177.188/32,📢 谷歌FCM,no-resolve
-  - IP-CIDR,74.125.23.188/32,📢 谷歌FCM,no-resolve
-  - DOMAIN-KEYWORD,admarvel,🛑 广告拦截
-  - DOMAIN-KEYWORD,adservice,🛑 广告拦截
-  - DOMAIN-SUFFIX,doubleclick.net
+  # 广告
+  - DOMAIN-SET,https://anti-ad.net/clash.list,REJECT
+
+  # 局域网 & 大陆
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/China/China.list,DIRECT
+  - GEOIP,CN,DIRECT
+
+  # 下载省流
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Download/Download.list,DIRECT
+
+  # 功能细分
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.list,Twitter
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.list,YouTube
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list,Telegram
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list,Google
+  - RULE-SET,https://raw.githubusercontent.com/no00see123/ACL4SSR/rm/Clash/人工智能.list,人工智能
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list,奈飞
+  - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/BiliBili/BiliBili.list,哔哩哔哩
+
+  # 兜底
+  - MATCH,🚀 策略选择
