@@ -75,6 +75,7 @@ proxy-groups:
     interval: 600
     tolerance: 100
     filter: "美国|US|USA"
+    use: [Airport]
 
   - name: 🇸🇬 新加坡节点
     type: url-test
@@ -82,6 +83,7 @@ proxy-groups:
     interval: 600
     tolerance: 100
     filter: "新加坡|SG|Singapore"
+    use: [Airport]
 
   - name: 🇯🇵 日本节点
     type: url-test
@@ -89,6 +91,7 @@ proxy-groups:
     interval: 600
     tolerance: 100
     filter: "日本|JP|Japan"
+    use: [Airport]
 
   - name: 🇭🇰 香港节点
     type: url-test
@@ -96,6 +99,7 @@ proxy-groups:
     interval: 600
     tolerance: 100
     filter: "港|HK|Hong"
+    use: [Airport]
 
   - name: 🇨🇳 台湾节点
     type: url-test
@@ -103,6 +107,7 @@ proxy-groups:
     interval: 600
     tolerance: 100
     filter: "台|TW|Taiwan"
+    use: [Airport]
 
   - name: 🌐 全球直连
     type: select
@@ -213,4 +218,5 @@ rules:
   - RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/BiliBili/BiliBili.list,哔哩哔哩
 
   # 兜底
+
   - MATCH,🚀 策略选择
