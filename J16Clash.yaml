@@ -54,6 +54,14 @@ proxy-providers:
       interval: 600
     filter: ".*"                    # 先全要，后面分组再精细过滤
 
+rule-providers:
+  anti-ad:
+    type: http
+    behavior: domain   # 关键：domain 行为
+    format: text       # anti-ad 提供纯文本域名列表
+    url: https://anti-ad.net/clash.list   # 同样是这个地址
+    interval: 86400
+
 # 2. 策略组
 proxy-groups:
   # 手动总开关
@@ -195,7 +203,7 @@ proxy-groups:
 # 3. 规则（顺序与你原配置一致）
 rules:
   # 广告
-  - DOMAIN-SET,https://anti-ad.net/clash.list,REJECT
+  - RULE-SET,anti-ad,REJECT
 
   # 局域网 & 大陆
   - IP-CIDR,192.168.0.0/16,DIRECT
@@ -220,4 +228,5 @@ rules:
   # 兜底
 
   - MATCH,🚀 策略选择
+
 
