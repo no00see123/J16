@@ -57,9 +57,9 @@ proxy-providers:
 rule-providers:
   anti-ad:
     type: http
-    behavior: domain   # 关键：domain 行为
-    format: text       # anti-ad 提供纯文本域名列表
-    url: https://anti-ad.net/clash.list   # 同样是这个地址
+    behavior: domain
+    format: yaml        # 改成 yaml，对应 clash.yaml
+    url: https://anti-ad.net/clash.yaml
     interval: 86400
 
 # 2. 策略组
@@ -228,5 +228,6 @@ rules:
   # 兜底
 
   - MATCH,🚀 策略选择
+
 
 
