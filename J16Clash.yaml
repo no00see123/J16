@@ -1,275 +1,311 @@
-# J16-Clash-CFW (2025-10-07) — Clash for Windows ready
-port: 7890
-socks-port: 7891
-mixed-port: 7892
+kimi
+#========== 通用参数 ==========
+mixed-port: 7890
 allow-lan: true
-bind-address: "0.0.0.0"
-mode: Rule
+bind-address: "*"
+mode: rule
 log-level: info
+ipv6: false                 # 国内 v6 残血，先关
+tcp-concurrent: true        # 同时发 SYN 到所有候选节点，选最快握手（Meta 特性）
+keep-alive-interval: 30     # 长连接心跳，秒级
 external-controller: 0.0.0.0:9090
+secret: "123456"            # ← 可改
+external-ui: ui
+external-ui-url: "https://gh-proxy.com/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
+#========== DNS：黑名单模式 ==========
 dns:
   enable: true
-  listen: 0.0.0.0:1053
+  listen: 0.0.0.0:7874
   ipv6: false
-  default-nameserver:
-    - 223.5.5.5
-  nameserver:
-    - "https://doh.pub/dns-query"
-    - "https://dns.alidns.com/dns-query"
-  fallback: []
-  fake-ip-range: "198.18.0.1/16"
-  fake-ip-filter:
-    - "*.lan"
-    - "*.local"
-    - "+.msftncsi.com"
-    - "+.msftconnecttest.com"
   enhanced-mode: fake-ip
-  fake-ip-full-cone: false
+  fake-ip-range: 198.20.0.0/16     # 与 198.18 错开，避开加速器默认段
+  fake-ip-filter-mode: blacklist   # 显性写出，方便改 whitelist 时秒切
+  fake-ip-filter:                  # 黑名单：列表内**不走** fake-ip
+    - +.lan
+    - +.local
+    - geosite:private
+    - geosite:cn
+  # 上游：干净本地 + 远程双保险
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4          # 污染保留段
+  # 下面两条很少人用，写出来给你找茬
+  fake-ip-cache-size: 4096    # 假 IP → 域名 LRU 缓存条数
+  fake-ip-filter-type: classical # 可选 classical / domain / regex
 
-tun:
-  enable: false
-  stack: system
-  dns-hijack:
-    - "8.8.8.8:53"
-    - "8.8.4.4:53"
-  auto-route: true
-  auto-detect-interface: true
-  excluded-ip-range:
-    - "10.0.0.0/8"
-    - "172.16.0.0/12"
-    - "192.168.0.0/16"
-    - "127.0.0.0/8"
+  #========== 节点来源 ==========
+proxies:
+  -
+    name: '🇭🇰 套餐到期日期：2026-03-06'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 套餐重置日期：2025-11-07'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 订阅获取时间：2025-10-09 02:13'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password: 2
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 香港 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password: 2
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 香港 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4017
+    password: 26
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 香港 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4018
+    password: 2
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4019
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4020
+    password: 26
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4028
+    password: 26
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4014
+    password:
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4015
+    password: 26
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4031
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4021
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4022
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4030
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4023
+    password: 2
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4024
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4026
+    password: 
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+
+  - name: 🇯🇵 自建留空
+    type: ss
+    server: 5.6.7.8
+    port: 8388
+    cipher: 2022-blake3-aes-256-gcm
+    password: "LONG_PASSWORD"
+    udp: true
 
 proxy-providers:
-  Airport:
+  sub:                       # 1 条订阅
     type: http
-    path: ./proxy-provider/airport.yaml
-    url: "https://bava8u2znaj6bdzzjnfb.wgetcloud.online/link/239615ef-90ba-3a9e-921d-534a371cdc41?target=clash"
-    interval: 86400
+    url: "YOUR_SUBSCRIPTION_URL"
+    path: ./sub.yaml
+    interval: 3600
     health-check:
       enable: true
-      url: "http://www.gstatic.com/generate_204"
-      interval: 600
-    filter: ".*"
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+      lazy: true
+      tolerance: 20
 
-rule-providers:
-  anti-ad:
-    type: http
-    behavior: domain
-    url: "https://anti-ad.net/clash.yaml"
-    path: ./rule-provider/anti-ad.yaml
-    interval: 86400
-
-  China:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/China/China.list"
-    path: ./rule-provider/China.list
-    interval: 86400
-
-  Download:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Download/Download.list"
-    path: ./rule-provider/Download.list
-    interval: 86400
-
-  Twitter:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.list"
-    path: ./rule-provider/Twitter.list
-    interval: 86400
-
-  YouTube:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/YouTube/YouTube.list"
-    path: ./rule-provider/YouTube.list
-    interval: 86400
-
-  Telegram:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list"
-    path: ./rule-provider/Telegram.list
-    interval: 86400
-
-  Google:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list"
-    path: ./rule-provider/Google.list
-    interval: 86400
-
-  人工智能:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/no00see123/ACL4SSR/rm/Clash/人工智能.list"
-    path: ./rule-provider/人工智能.list
-    interval: 86400
-
-  Netflix:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list"
-    path: ./rule-provider/Netflix.list
-    interval: 86400
-
-  BiliBili:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/BiliBili/BiliBili.list"
-    path: ./rule-provider/BiliBili.list
-    interval: 86400
-
-# Proxies: keep empty if you rely on proxy-providers / subscription
-proxies: []
-
+#========== 一级：人工「节点选择」 ==========
 proxy-groups:
-  - name: 策略选择
+  -
+    name: '🚀 节点选择'
     type: select
     proxies:
-      - 美国节点
-      - 新加坡节点
-      - 日本节点
-      - 香港节点
-      - 台湾节点
-      - 全球直连
-      # - VLESS-10870    # 可取消注释并确保 proxies 中存在此节点
+      - '🇭🇰 套餐到期日期：2026-03-06'
+      - '🇭🇰 套餐重置日期：2025-11-07'
+      - '🇭🇰 订阅获取时间：2025-10-09 02:13'
+      - '🇭🇰 香港 01'
+      - '🇭🇰 香港 02'
+      - '🇭🇰 香港 03'
+      - '🇨🇳 台湾 01'
+      - '🇨🇳 台湾 02'
+      - '🇨🇳 台湾 03'
+      - '🇸🇬 新加坡 01'
+      - '🇸🇬 新加坡 02'
+      - '🇸🇬 新加坡 03'
+      - '🇯🇵 日本 01'
+      - '🇯🇵 日本 02'
+      - '🇯🇵 日本 03'
+      - '🇺🇲 美国 01'
+      - '🇺🇲 美国 02'
+      - '🇺🇲 美国 03'
+      - DIRECT
+  -
 
-  - name: 美国节点
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 600
-    tolerance: 100
-    use:
-      - Airport
-    filter: "美国|US|USA"
+#========== 二级：业务分流 ==========
+  - name: 🔒 敏感服务（国外）
+    type: select
+    proxies:
+      - 🎯 节点选择            # 想手工点就它
+      - ♻️ 自动选择（港台）     # 敏感业务一般想要低延迟
+      - 🇺🇸 自建洛杉矶          # 自建 IP 干净，抗封
+      - 🚀 订阅自动选择
 
-  - name: 新加坡节点
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 600
-    tolerance: 100
-    use:
-      - Airport
-    filter: "新加坡|SG|Singapore"
+  - name: 🌐 一般服务（国外）
+    type: select
+    proxies:
+      - 🚀 订阅自动选择        # 带宽大、不挑 IP
+      - ♻️ 自动选择（港台）
+      - 🎯 节点选择
+      - DIRECT                 # 偶尔想直连也可
 
-  - name: 日本节点
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 600
-    tolerance: 100
-    use:
-      - Airport
-    filter: "日本|JP|Japan"
-
-  - name: 香港节点
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 600
-    tolerance: 100
-    use:
-      - Airport
-    filter: "港|HK|Hong"
-
-  - name: 台湾节点
-    type: url-test
-    url: "http://www.gstatic.com/generate_204"
-    interval: 600
-    tolerance: 100
-    use:
-      - Airport
-    filter: "台|TW|Taiwan"
-
-  - name: 全球直连
+  - name: 🌏 国内直连
     type: select
     proxies:
       - DIRECT
+      - 🎯 节点选择            # 特殊需求时临时走代理
+      - ♻️ 自动选择（港台）
 
-  - name: 人工智能
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
 
-  - name: Google
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
+#========== 三级：自动测速子组（被上层引用） ==========
+  - name: ♻️ 自动选择（港台）
+    type: url-test
+    use:
+      - sub
+    filter: "(?i)(港|HK|hk|台|TW|tw)"  # 只挑港台
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 20
 
-  - name: Crypto
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: Twitter
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: Telegram
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: YouTube
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: Discord
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: 国内媒体
-    type: select
-    proxies:
-      - 全球直连
-      - 香港节点
-      - 台湾节点
-
-  - name: 国外媒体
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: 奈飞
-    type: select
-    proxies:
-      - 策略选择
-      - 全球直连
-
-  - name: 哔哩哔哩
-    type: select
-    proxies:
-      - 全球直连
-      - 香港节点
-      - 台湾节点
-
-rules:
-  - RULE-SET,anti-ad,REJECT
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - RULE-SET,China,DIRECT
-  - RULE-SET,Download,DIRECT
-  - RULE-SET,Twitter,Twitter
-  - RULE-SET,YouTube,YouTube
-  - RULE-SET,Telegram,Telegram
-  - RULE-SET,Google,Google
-  - RULE-SET,人工智能,人工智能
-  - RULE-SET,Netflix,奈飞
-  - RULE-SET,BiliBili,哔哩哔哩
-  - MATCH, 策略选择
+  - name: 🚀 订阅自动选择
+    type: url-test
+    use:
+      - sub
+    filter: "^((?!(港|HK|hk|台|TW|tw)).)*$"  # 排除港台，其余全要
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 20
+#========== 规则（精简 6 行） ==========
+  rules:
+  
+  - GEOSITE,category-ads-all,🛑 广告拦截
+  - GEOSITE,category-public-tracker,🧩 应用净化
+  - GEOSITE,private,🌏 国内直连
+  - GEOSITE,cn,🌏 国内直连
+  - GEOSITE,google,🔒 敏感服务（国外）
+  - GEOSITE,youtube,🔒 敏感服务（国外）
+  - GEOSITE,telegram,🔒 敏感服务（国外）
+  - DOMAIN-SUFFIX,netflix.com,🌐 一般服务（国外）   # 示例
+  - MATCH,🐟 漏网之鱼
