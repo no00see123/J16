@@ -260,7 +260,7 @@ proxy-groups:
     proxies:
       - 🎯 节点选择            # 想手工点就它
       - ♻️ 自动选择（港台）     # 敏感业务一般想要低延迟
-      - 🇺🇸 自建洛杉矶          # 自建 IP 干净，抗封
+      - 🇺🇸 自建留空          # 自建 IP 干净，抗封
       - 🚀 订阅自动选择
 
   - name: 🌐 一般服务（国外）
@@ -309,3 +309,4 @@ proxy-groups:
   - GEOSITE,telegram,🔒 敏感服务（国外）
   - DOMAIN-SUFFIX,netflix.com,🌐 一般服务（国外）   # 示例
   - MATCH,🐟 漏网之鱼
+
