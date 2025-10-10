@@ -206,7 +206,7 @@ proxies:
     skip-cert-verify: true
     udp: true
 
-  - name: 🇯🇵 自建留空
+  - name:  'sg 自建留空'
     type: ss
     server: 5.6.7.8
     port: 8388
@@ -251,6 +251,7 @@ proxy-groups:
       - '🇺🇲 美国 01'
       - '🇺🇲 美国 02'
       - '🇺🇲 美国 03'
+    # - 'SF 自建留空'
       - DIRECT
   -
 
@@ -260,7 +261,7 @@ proxy-groups:
     proxies:
       - 🎯 节点选择            # 想手工点就它
       - ♻️ 自动选择（港台）     # 敏感业务一般想要低延迟
-      - 🇺🇸 自建留空          # 自建 IP 干净，抗封
+      - 🇺🇸 自建洛杉矶          # 自建 IP 干净，抗封
       - 🚀 订阅自动选择
 
   - name: 🌐 一般服务（国外）
@@ -299,6 +300,87 @@ proxy-groups:
     tolerance: 20
 #========== 规则（精简 6 行） ==========
   rules:
+  #twitter
+  - DOMAIN-SUFFIX,twitter.com 🚀 节点选择
+  - DOMAIN-SUFFIX,x.com 🚀 节点选择
+  - DOMAIN-SUFFIX,t.co 🚀 节点选择
+  - DOMAIN-SUFFIX,twimg.com 🚀 节点选择
+  - DOMAIN-SUFFIX,grok.com 🚀 节点选择
+  - DOMAIN-KEYWORD,twitter 🚀 节点选择
+  - IP-CIDR,192.133.76.0/22 🚀 节点选择
+  - IP-CIDR,199.59.148.0/22 🚀 节点选择
+  - IP-CIDR,199.96.56.0/21 🚀 节点选择
+  - IP-CIDR,69.195.160.0/19 🚀 节点选择
+  #google
+  - DOMAIN-SUFFIX,google.com 🚀 节点选择
+  - DOMAIN-SUFFIX,gmail.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googledrive.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googleapis.com 🚀 节点选择
+  - DOMAIN-SUFFIX,gstatic.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googleusercontent.com 🚀 节点选择
+  - DOMAIN-SUFFIX,android.com 🚀 节点选择
+  - DOMAIN-SUFFIX,firebaseapp.com 🚀 节点选择
+  - DOMAIN-SUFFIX,firebaseio.com 🚀 节点选择
+  - DOMAIN-SUFFIX,cloudfunctions.net 🚀 节点选择
+  - DOMAIN-KEYWORD,google 🚀 节点选择
+  - DOMAIN-KEYWORD,gmail 🚀 节点选择
+  - DOMAIN-KEYWORD,recaptcha 🚀 节点选择
+  - IP-CIDR,173.194.0.0/16 🚀 节点选择
+  - IP-CIDR,74.125.0.0/16 🚀 节点选择
+  - PROCESS-NAME,GoogleDriveFS.exe 🚀 节点选择
+  - PROCESS-NAME,com.android.vending 🚀 节点选择
+  - PROCESS-NAME,com.google.android.gms 🚀 节点选择
+  - PROCESS-NAME,com.google.android.gsf 🚀 节点选择
+  #ai
+  - DOMAIN-KEYWORD,anthropic 🚀 节点选择 
+  - DOMAIN-KEYWORD,claude 🚀 节点选择 
+  - DOMAIN-KEYWORD,openai 🚀 节点选择 
+  - DOMAIN-KEYWORD,colab 🚀 节点选择 
+  - DOMAIN-KEYWORD,generativelanguage 🚀 节点选择
+  - DOMAIN,ai.google.dev 🚀 节点选择 
+  - DOMAIN,api.groq.com 🚀 节点选择 
+  - DOMAIN,chat.openai.com.cdn.cloudflare.net 🚀 节点选择 
+  - DOMAIN,gemini.google.com 🚀 节点选择 
+  - DOMAIN,makersuite.google.com 🚀 节点选择 
+  - DOMAIN,openai-api.arkoselabs.com 🚀 节点选择 
+  - DOMAIN,www.bing.com 🚀 节点选择
+  - DOMAIN-SUFFIX,anthropic.com 🚀 节点选择 
+  - DOMAIN-SUFFIX,chatgpt.com 🚀 节点选择 
+  - DOMAIN-SUFFIX,claude.ai 🚀 节点选择 
+  - DOMAIN-SUFFIX,claudeusercontent.com 🚀 节点选择 
+  - DOMAIN-SUFFIX,gemini.google.com 🚀 节点选择 
+  - DOMAIN-SUFFIX,generativeai.google 🚀 节点选择 
+  - DOMAIN-SUFFIX,makersuite.google.com 🚀 节点选择 
+  - DOMAIN-SUFFIX,openai.com 🚀 节点选择 
+  - IP-CIDR,24.199.123.28/32,no-resolve 🚀 节点选择 
+  - IP-CIDR,64.23.132.171/32,no-resolve 🚀 节点选择 
+  - IP-ASN,14061,no-resolve 🚀 节点选择 
+  - IP-ASN,20473,no-resolve 🚀 节点选择
+  #crypto
+  - DOMAIN-SUFFIX,aicoin.com 🚀 节点选择
+  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
+  - DOMAIN-KEYWORD,binance 🚀 节点选择
+  - DOMAIN-KEYWORD,okx 🚀 节点选择
+  - DOMAIN-SUFFIX,okex.com 🚀 节点选择
+  - PROCESS-NAME,Binance.exe 🚀 节点选择
+  - DOMAIN-SUFFIX,gate.ac 🚀 节点选择
+  - DOMAIN-SUFFIX,gate.io 🚀 节点选择
+  - DOMAIN-KEYWORD,huobi 🚀 节点选择
+  - DOMAIN-KEYWORD,metamask 🚀 节点选择
+  - PROCESS-NAME,Huobi.exe 🚀 节点选择
+  - PROCESS-NAME,OKX.exe 🚀 节点选择
+  - DOMAIN-SUFFIX,bitfinex.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coinbase.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coingecko.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coinmarketcap.com 🚀 节点选择
+  - DOMAIN-SUFFIX,etherscan.com 🚀 节点选择
+  - DOMAIN-SUFFIX,etherscan.io 🚀 节点选择
+  - DOMAIN-SUFFIX,kraken.com 🚀 节点选择
+  - DOMAIN-SUFFIX,mexc.com 🚀 节点选择
+  - DOMAIN-SUFFIX,oklink.com 🚀 节点选择
+  - DOMAIN-SUFFIX,opensea.io 🚀 节点选择
+  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
+  - DOMAIN-SUFFIX,tronlink.org 🚀 节点选择
   
   - GEOSITE,category-ads-all,🛑 广告拦截
   - GEOSITE,category-public-tracker,🧩 应用净化
@@ -307,6 +389,7 @@ proxy-groups:
   - GEOSITE,google,🔒 敏感服务（国外）
   - GEOSITE,youtube,🔒 敏感服务（国外）
   - GEOSITE,telegram,🔒 敏感服务（国外）
+  
+  
   - DOMAIN-SUFFIX,netflix.com,🌐 一般服务（国外）   # 示例
   - MATCH,🐟 漏网之鱼
-
