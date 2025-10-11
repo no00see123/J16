@@ -1,4 +1,4 @@
-#10.12，完美修订版
+kimi10.12 完美修订版
 #========== 通用参数 ==========
 mixed-port: 7890
 allow-lan: true
@@ -51,33 +51,158 @@ proxies:
     type: trojan
     server: 106.55.129.171
     port: 4016
-    password:
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
     sni: baidu.com
     skip-cert-verify: true
     udp: true
-
   -
     name: '🇭🇰 香港 01'
     type: trojan
     server: 106.55.129.171
     port: 4016
-    password: 2
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 香港 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4017
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇭🇰 香港 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4018
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4019
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4020
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇨🇳 台湾 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4028
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4014
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4015
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇸🇬 新加坡 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4031
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4021
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4022
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇯🇵 日本 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4030
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4023
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 02'
+    type: trojan
+    server: 106.55.129.171
+    port: 4024
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+  -
+    name: '🇺🇲 美国 03'
+    type: trojan
+    server: 106.55.129.171
+    port: 4026
+    password: 26a27d56-dc0f-34a1-a469-4652fab679bf
     sni: baidu.com
     skip-cert-verify: true
     udp: true
 
-  - name:  'sg 自建留空'
-    type: ss
-    server: 5.6.7.8
-    port: 8388
-    cipher: 2022-blake3-aes-256-gcm
-    password: "LONG_PASSWORD"
-    udp: true
+  #- name:  'sg 自建留空'
+    #type: ss
+    #server: 5.6.7.8
+    #port: 8388
+    #cipher: 2022-blake3-aes-256-gcm
+    #password: "LONG_PASSWORD"
+    #udp: true
 
 proxy-providers:
   sub:                       # 1 条订阅
     type: http
-    url: "YOUR_SUBSCRIPTION_URL"
+    url: "https://bava8u2znaj6bdzzjnfb.wgetcloud.online/link/239615ef-90ba-3a9e-921d-534a371cdc41"
     path: ./sub.yaml
     interval: 3600
     health-check:
@@ -139,7 +264,10 @@ proxy-groups:
 
 #========== 规则（精简 6 行） ==========
 rules:
-  #twitter
+  - GEOSITE,category-ads-all,🛑 广告拦截
+  - GEOSITE,category-public-tracker 🧩 应用净化
+  
+	  #twitter
   - DOMAIN-SUFFIX,twitter.com 🚀 节点选择
   - DOMAIN-SUFFIX,x.com 🚀 节点选择
   - DOMAIN-SUFFIX,t.co 🚀 节点选择
@@ -150,7 +278,7 @@ rules:
   - IP-CIDR,199.59.148.0/22 🚀 节点选择
   - IP-CIDR,199.96.56.0/21 🚀 节点选择
   - IP-CIDR,69.195.160.0/19 🚀 节点选择
-  #google
+	  #google
   - DOMAIN-SUFFIX,google.com 🚀 节点选择
   - DOMAIN-SUFFIX,gmail.com 🚀 节点选择
   - DOMAIN-SUFFIX,googledrive.com 🚀 节点选择
@@ -170,7 +298,7 @@ rules:
   - PROCESS-NAME,com.android.vending 🚀 节点选择
   - PROCESS-NAME,com.google.android.gms 🚀 节点选择
   - PROCESS-NAME,com.google.android.gsf 🚀 节点选择
-  #ai
+	  #ai
   - DOMAIN-KEYWORD,anthropic 🚀 节点选择
   - DOMAIN-KEYWORD,claude 🚀 节点选择
   - DOMAIN-KEYWORD,openai 🚀 节点选择
@@ -195,7 +323,7 @@ rules:
   - IP-CIDR,64.23.132.171/32,no-resolve 🚀 节点选择
   - IP-ASN,14061,no-resolve 🚀 节点选择
   - IP-ASN,20473,no-resolve 🚀 节点选择
-  #crypto
+	  #crypto
   - DOMAIN-SUFFIX,aicoin.com 🚀 节点选择
   - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
   - DOMAIN-KEYWORD,binance 🚀 节点选择
@@ -221,18 +349,13 @@ rules:
   - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
   - DOMAIN-SUFFIX,tronlink.org 🚀 节点选择
 
-  #telegram
+	  #telegram
   - GEOSITE,telegram 🚀 节点选择
   - GEOIP,Telegram 🚀 节点选择
 
-  - DOMAIN-SUFFIX,netflix.com 🌐 一般服务（国外）
-
-  - GEOSITE,category-ads-all,🛑 广告拦截
-  - GEOSITE,category-public-tracker 🧩 应用净化
   - GEOSITE,private 🌏 国内直连
   - GEOSITE,cn 🌏 国内直连
-  - GEOSITE,google 🔒 敏感服务（国外）
-  - GEOSITE,youtube 🔒 敏感服务（国外）
-  - GEOSITE,telegram 🔒 敏感服务（国外）
+    # ③ UDP 兜底（游戏/QUIC）
+  - GEOSITE,geolocation-!cn,🔒 敏感服务（国外）,udp
 
   - MATCH 🐟 漏网之鱼
