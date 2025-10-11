@@ -1,395 +1,238 @@
-kimi
+#10.12，完美修订版
 #========== 通用参数 ==========
 mixed-port: 7890
 allow-lan: true
 bind-address: "*"
 mode: rule
 log-level: info
-ipv6: false                 # 国内 v6 残血，先关
-tcp-concurrent: true        # 同时发 SYN 到所有候选节点，选最快握手（Meta 特性）
-keep-alive-interval: 30     # 长连接心跳，秒级
+ipv6: false                  # 国内 v6 残血，先关
+tcp-concurrent: true        # 同时发 SYN 到所有候选节点，选最快握手（Meta 特性）
+keep-alive-interval: 30     # 长连接心跳，秒级
 external-controller: 0.0.0.0:9090
-secret: "123456"            # ← 可改
+secret: "123456"            # ← 可改
 external-ui: ui
 external-ui-url: "https://gh-proxy.com/github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 
 #========== DNS：黑名单模式 ==========
 dns:
-  enable: true
-  listen: 0.0.0.0:7874
-  ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.20.0.0/16     # 与 198.18 错开，避开加速器默认段
-  fake-ip-filter-mode: blacklist   # 显性写出，方便改 whitelist 时秒切
-  fake-ip-filter:                  # 黑名单：列表内**不走** fake-ip
-    - +.lan
-    - +.local
-    - geosite:private
-    - geosite:cn
-  # 上游：干净本地 + 远程双保险
-  nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  fallback:
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
-  fallback-filter:
-    geoip: true
-    ipcidr:
-      - 240.0.0.0/4          # 污染保留段
-  # 下面两条很少人用，写出来给你找茬
-  fake-ip-cache-size: 4096    # 假 IP → 域名 LRU 缓存条数
-  fake-ip-filter-type: classical # 可选 classical / domain / regex
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.20.0.0/16     # 与 198.18 错开，避开加速器默认段
+  fake-ip-filter-mode: blacklist   # 显性写出，方便改 whitelist 时秒切
+  fake-ip-filter:                  # 黑名单：列表内**不走** fake-ip
+    - +.lan
+    - +.local
+    - geosite:private
+    - geosite:cn
+  # 上游：干净本地 + 远程双保险
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver-policy:               # ← 新增：国内域名走国内 DNS
+    geosite:cn,private:
+      - 223.5.5.5
+      - 119.29.29.29
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4          # 污染保留段
+  fake-ip-cache-size: 4096    # 假 IP → 域名 LRU 缓存条数
+  fake-ip-filter-type: classical # 可选 classical / domain / regex
 
-  #========== 节点来源 ==========
+#========== 节点来源 ==========
 proxies:
-  -
-    name: '🇭🇰 套餐到期日期：2026-03-06'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 套餐重置日期：2025-11-07'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 订阅获取时间：2025-10-09 02:13'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 2
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4016
-    password: 2
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4017
-    password: 26
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇭🇰 香港 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4018
-    password: 2
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4019
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4020
-    password: 26
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇨🇳 台湾 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4028
-    password: 26
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4014
-    password:
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4015
-    password: 26
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇸🇬 新加坡 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4031
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4021
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4022
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇯🇵 日本 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4030
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 01'
-    type: trojan
-    server: 106.55.129.171
-    port: 4023
-    password: 2
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 02'
-    type: trojan
-    server: 106.55.129.171
-    port: 4024
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
-  -
-    name: '🇺🇲 美国 03'
-    type: trojan
-    server: 106.55.129.171
-    port: 4026
-    password: 
-    sni: baidu.com
-    skip-cert-verify: true
-    udp: true
+  -
+    name: '🇭🇰 套餐到期日期：2026-03-06'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password:
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
 
-  - name:  'sg 自建留空'
-    type: ss
-    server: 5.6.7.8
-    port: 8388
-    cipher: 2022-blake3-aes-256-gcm
-    password: "LONG_PASSWORD"
-    udp: true
+  -
+    name: '🇭🇰 香港 01'
+    type: trojan
+    server: 106.55.129.171
+    port: 4016
+    password: 2
+    sni: baidu.com
+    skip-cert-verify: true
+    udp: true
+
+  - name:  'sg 自建留空'
+    type: ss
+    server: 5.6.7.8
+    port: 8388
+    cipher: 2022-blake3-aes-256-gcm
+    password: "LONG_PASSWORD"
+    udp: true
 
 proxy-providers:
-  sub:                       # 1 条订阅
-    type: http
-    url: "YOUR_SUBSCRIPTION_URL"
-    path: ./sub.yaml
-    interval: 3600
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 300
-      lazy: true
-      tolerance: 20
+  sub:                       # 1 条订阅
+    type: http
+    url: "YOUR_SUBSCRIPTION_URL"
+    path: ./sub.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+      lazy: true
+      tolerance: 20
 
 #========== 一级：人工「节点选择」 ==========
 proxy-groups:
-  -
-    name: '🚀 节点选择'
-    type: select
-    proxies:
-      - '🇭🇰 套餐到期日期：2026-03-06'
-      - '🇭🇰 套餐重置日期：2025-11-07'
-      - '🇭🇰 订阅获取时间：2025-10-09 02:13'
-      - '🇭🇰 香港 01'
-      - '🇭🇰 香港 02'
-      - '🇭🇰 香港 03'
-      - '🇨🇳 台湾 01'
-      - '🇨🇳 台湾 02'
-      - '🇨🇳 台湾 03'
-      - '🇸🇬 新加坡 01'
-      - '🇸🇬 新加坡 02'
-      - '🇸🇬 新加坡 03'
-      - '🇯🇵 日本 01'
-      - '🇯🇵 日本 02'
-      - '🇯🇵 日本 03'
-      - '🇺🇲 美国 01'
-      - '🇺🇲 美国 02'
-      - '🇺🇲 美国 03'
-    # - 'SF 自建留空'
-      - DIRECT
-  -
+  -
+    name: '🚀 节点选择'
+    type: select
+    proxies:
+      - '🇭🇰 套餐到期日期：2026-03-06'
+      - '🇭🇰 香港 01'
+      - '🇭🇰 香港 02'
+      - '🇭🇰 香港 03'
+      - '🇨🇳 台湾 01'
+      - '🇨🇳 台湾 02'
+      - '🇨🇳 台湾 03'
+      - '🇸🇬 新加坡 01'
+      - '🇸🇬 新加坡 02'
+      - '🇸🇬 新加坡 03'
+      - '🇯🇵 日本 01'
+      - '🇯🇵 日本 02'
+      - '🇯🇵 日本 03'
+      - '🇺🇲 美国 01'
+      - '🇺🇲 美国 02'
+      - '🇺🇲 美国 03'
+      # - 'SF 自建留空'
+      - DIRECT
 
 #========== 二级：业务分流 ==========
-  - name: 🔒 敏感服务（国外）
-    type: select
-    proxies:
-      - 🎯 节点选择            # 想手工点就它
-      - ♻️ 自动选择（港台）     # 敏感业务一般想要低延迟
-      - 🇺🇸 自建洛杉矶          # 自建 IP 干净，抗封
-      - 🚀 订阅自动选择
+  - name: 🔒 敏感服务（国外）
+    type: select
+    proxies:
+      - '🚀 节点选择'          # 想手工点就它
+      - 'sg 自建留空'          # 自建 IP 干净，抗封
 
-  - name: 🌐 一般服务（国外）
-    type: select
-    proxies:
-      - 🚀 订阅自动选择        # 带宽大、不挑 IP
-      - ♻️ 自动选择（港台）
-      - 🎯 节点选择
-      - DIRECT                 # 偶尔想直连也可
+  - name: 🌐 一般服务（国外）
+    type: select
+    proxies:
+      - '🚀 节点选择'
+      - DIRECT                 # 偶尔想直连也可
 
-  - name: 🌏 国内直连
-    type: select
-    proxies:
-      - DIRECT
-      - 🎯 节点选择            # 特殊需求时临时走代理
-      - ♻️ 自动选择（港台）
+  - name: 🌏 国内直连
+    type: select
+    proxies:
+      - DIRECT
+      - '🚀 节点选择'          # 特殊需求时临时走代理
 
+  - name: 🐟 漏网之鱼         # ← 新增：兜底组
+    type: select
+    proxies:
+      - '🚀 节点选择'
+      - DIRECT
 
-#========== 三级：自动测速子组（被上层引用） ==========
-  - name: ♻️ 自动选择（港台）
-    type: url-test
-    use:
-      - sub
-    filter: "(?i)(港|HK|hk|台|TW|tw)"  # 只挑港台
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 20
-
-  - name: 🚀 订阅自动选择
-    type: url-test
-    use:
-      - sub
-    filter: "^((?!(港|HK|hk|台|TW|tw)).)*$"  # 排除港台，其余全要
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 20
 #========== 规则（精简 6 行） ==========
-  rules:
-  #twitter
-  - DOMAIN-SUFFIX,twitter.com 🚀 节点选择
-  - DOMAIN-SUFFIX,x.com 🚀 节点选择
-  - DOMAIN-SUFFIX,t.co 🚀 节点选择
-  - DOMAIN-SUFFIX,twimg.com 🚀 节点选择
-  - DOMAIN-SUFFIX,grok.com 🚀 节点选择
-  - DOMAIN-KEYWORD,twitter 🚀 节点选择
-  - IP-CIDR,192.133.76.0/22 🚀 节点选择
-  - IP-CIDR,199.59.148.0/22 🚀 节点选择
-  - IP-CIDR,199.96.56.0/21 🚀 节点选择
-  - IP-CIDR,69.195.160.0/19 🚀 节点选择
-  #google
-  - DOMAIN-SUFFIX,google.com 🚀 节点选择
-  - DOMAIN-SUFFIX,gmail.com 🚀 节点选择
-  - DOMAIN-SUFFIX,googledrive.com 🚀 节点选择
-  - DOMAIN-SUFFIX,googleapis.com 🚀 节点选择
-  - DOMAIN-SUFFIX,gstatic.com 🚀 节点选择
-  - DOMAIN-SUFFIX,googleusercontent.com 🚀 节点选择
-  - DOMAIN-SUFFIX,android.com 🚀 节点选择
-  - DOMAIN-SUFFIX,firebaseapp.com 🚀 节点选择
-  - DOMAIN-SUFFIX,firebaseio.com 🚀 节点选择
-  - DOMAIN-SUFFIX,cloudfunctions.net 🚀 节点选择
-  - DOMAIN-KEYWORD,google 🚀 节点选择
-  - DOMAIN-KEYWORD,gmail 🚀 节点选择
-  - DOMAIN-KEYWORD,recaptcha 🚀 节点选择
-  - IP-CIDR,173.194.0.0/16 🚀 节点选择
-  - IP-CIDR,74.125.0.0/16 🚀 节点选择
-  - PROCESS-NAME,GoogleDriveFS.exe 🚀 节点选择
-  - PROCESS-NAME,com.android.vending 🚀 节点选择
-  - PROCESS-NAME,com.google.android.gms 🚀 节点选择
-  - PROCESS-NAME,com.google.android.gsf 🚀 节点选择
-  #ai
-  - DOMAIN-KEYWORD,anthropic 🚀 节点选择 
-  - DOMAIN-KEYWORD,claude 🚀 节点选择 
-  - DOMAIN-KEYWORD,openai 🚀 节点选择 
-  - DOMAIN-KEYWORD,colab 🚀 节点选择 
-  - DOMAIN-KEYWORD,generativelanguage 🚀 节点选择
-  - DOMAIN,ai.google.dev 🚀 节点选择 
-  - DOMAIN,api.groq.com 🚀 节点选择 
-  - DOMAIN,chat.openai.com.cdn.cloudflare.net 🚀 节点选择 
-  - DOMAIN,gemini.google.com 🚀 节点选择 
-  - DOMAIN,makersuite.google.com 🚀 节点选择 
-  - DOMAIN,openai-api.arkoselabs.com 🚀 节点选择 
-  - DOMAIN,www.bing.com 🚀 节点选择
-  - DOMAIN-SUFFIX,anthropic.com 🚀 节点选择 
-  - DOMAIN-SUFFIX,chatgpt.com 🚀 节点选择 
-  - DOMAIN-SUFFIX,claude.ai 🚀 节点选择 
-  - DOMAIN-SUFFIX,claudeusercontent.com 🚀 节点选择 
-  - DOMAIN-SUFFIX,gemini.google.com 🚀 节点选择 
-  - DOMAIN-SUFFIX,generativeai.google 🚀 节点选择 
-  - DOMAIN-SUFFIX,makersuite.google.com 🚀 节点选择 
-  - DOMAIN-SUFFIX,openai.com 🚀 节点选择 
-  - IP-CIDR,24.199.123.28/32,no-resolve 🚀 节点选择 
-  - IP-CIDR,64.23.132.171/32,no-resolve 🚀 节点选择 
-  - IP-ASN,14061,no-resolve 🚀 节点选择 
-  - IP-ASN,20473,no-resolve 🚀 节点选择
-  #crypto
-  - DOMAIN-SUFFIX,aicoin.com 🚀 节点选择
-  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
-  - DOMAIN-KEYWORD,binance 🚀 节点选择
-  - DOMAIN-KEYWORD,okx 🚀 节点选择
-  - DOMAIN-SUFFIX,okex.com 🚀 节点选择
-  - PROCESS-NAME,Binance.exe 🚀 节点选择
-  - DOMAIN-SUFFIX,gate.ac 🚀 节点选择
-  - DOMAIN-SUFFIX,gate.io 🚀 节点选择
-  - DOMAIN-KEYWORD,huobi 🚀 节点选择
-  - DOMAIN-KEYWORD,metamask 🚀 节点选择
-  - PROCESS-NAME,Huobi.exe 🚀 节点选择
-  - PROCESS-NAME,OKX.exe 🚀 节点选择
-  - DOMAIN-SUFFIX,bitfinex.com 🚀 节点选择
-  - DOMAIN-SUFFIX,coinbase.com 🚀 节点选择
-  - DOMAIN-SUFFIX,coingecko.com 🚀 节点选择
-  - DOMAIN-SUFFIX,coinmarketcap.com 🚀 节点选择
-  - DOMAIN-SUFFIX,etherscan.com 🚀 节点选择
-  - DOMAIN-SUFFIX,etherscan.io 🚀 节点选择
-  - DOMAIN-SUFFIX,kraken.com 🚀 节点选择
-  - DOMAIN-SUFFIX,mexc.com 🚀 节点选择
-  - DOMAIN-SUFFIX,oklink.com 🚀 节点选择
-  - DOMAIN-SUFFIX,opensea.io 🚀 节点选择
-  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
-  - DOMAIN-SUFFIX,tronlink.org 🚀 节点选择
-  
-  - GEOSITE,category-ads-all,🛑 广告拦截
-  - GEOSITE,category-public-tracker,🧩 应用净化
-  - GEOSITE,private,🌏 国内直连
-  - GEOSITE,cn,🌏 国内直连
-  - GEOSITE,google,🔒 敏感服务（国外）
-  - GEOSITE,youtube,🔒 敏感服务（国外）
-  - GEOSITE,telegram,🔒 敏感服务（国外）
-  
-  
-  - DOMAIN-SUFFIX,netflix.com,🌐 一般服务（国外）   # 示例
-  - MATCH,🐟 漏网之鱼
+rules:
+  #twitter
+  - DOMAIN-SUFFIX,twitter.com 🚀 节点选择
+  - DOMAIN-SUFFIX,x.com 🚀 节点选择
+  - DOMAIN-SUFFIX,t.co 🚀 节点选择
+  - DOMAIN-SUFFIX,twimg.com 🚀 节点选择
+  - DOMAIN-SUFFIX,grok.com 🚀 节点选择
+  - DOMAIN-KEYWORD,twitter 🚀 节点选择
+  - IP-CIDR,192.133.76.0/22 🚀 节点选择
+  - IP-CIDR,199.59.148.0/22 🚀 节点选择
+  - IP-CIDR,199.96.56.0/21 🚀 节点选择
+  - IP-CIDR,69.195.160.0/19 🚀 节点选择
+  #google
+  - DOMAIN-SUFFIX,google.com 🚀 节点选择
+  - DOMAIN-SUFFIX,gmail.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googledrive.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googleapis.com 🚀 节点选择
+  - DOMAIN-SUFFIX,gstatic.com 🚀 节点选择
+  - DOMAIN-SUFFIX,googleusercontent.com 🚀 节点选择
+  - DOMAIN-SUFFIX,android.com 🚀 节点选择
+  - DOMAIN-SUFFIX,firebaseapp.com 🚀 节点选择
+  - DOMAIN-SUFFIX,firebaseio.com 🚀 节点选择
+  - DOMAIN-SUFFIX,cloudfunctions.net 🚀 节点选择
+  - DOMAIN-KEYWORD,google 🚀 节点选择
+  - DOMAIN-KEYWORD,gmail 🚀 节点选择
+  - DOMAIN-KEYWORD,recaptcha 🚀 节点选择
+  - IP-CIDR,173.194.0.0/16 🚀 节点选择
+  - IP-CIDR,74.125.0.0/16 🚀 节点选择
+  - PROCESS-NAME,GoogleDriveFS.exe 🚀 节点选择
+  - PROCESS-NAME,com.android.vending 🚀 节点选择
+  - PROCESS-NAME,com.google.android.gms 🚀 节点选择
+  - PROCESS-NAME,com.google.android.gsf 🚀 节点选择
+  #ai
+  - DOMAIN-KEYWORD,anthropic 🚀 节点选择
+  - DOMAIN-KEYWORD,claude 🚀 节点选择
+  - DOMAIN-KEYWORD,openai 🚀 节点选择
+  - DOMAIN-KEYWORD,colab 🚀 节点选择
+  - DOMAIN-KEYWORD,generativelanguage 🚀 节点选择
+  - DOMAIN,ai.google.dev 🚀 节点选择
+  - DOMAIN,api.groq.com 🚀 节点选择
+  - DOMAIN,chat.openai.com.cdn.cloudflare.net 🚀 节点选择
+  - DOMAIN,gemini.google.com 🚀 节点选择
+  - DOMAIN,makersuite.google.com 🚀 节点选择
+  - DOMAIN,openai-api.arkoselabs.com 🚀 节点选择
+  - DOMAIN,www.bing.com 🚀 节点选择
+  - DOMAIN-SUFFIX,anthropic.com 🚀 节点选择
+  - DOMAIN-SUFFIX,chatgpt.com 🚀 节点选择
+  - DOMAIN-SUFFIX,claude.ai 🚀 节点选择
+  - DOMAIN-SUFFIX,claudeusercontent.com 🚀 节点选择
+  - DOMAIN-SUFFIX,gemini.google.com 🚀 节点选择
+  - DOMAIN-SUFFIX,generativeai.google 🚀 节点选择
+  - DOMAIN-SUFFIX,makersuite.google.com 🚀 节点选择
+  - DOMAIN-SUFFIX,openai.com 🚀 节点选择
+  - IP-CIDR,24.199.123.28/32,no-resolve 🚀 节点选择
+  - IP-CIDR,64.23.132.171/32,no-resolve 🚀 节点选择
+  - IP-ASN,14061,no-resolve 🚀 节点选择
+  - IP-ASN,20473,no-resolve 🚀 节点选择
+  #crypto
+  - DOMAIN-SUFFIX,aicoin.com 🚀 节点选择
+  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
+  - DOMAIN-KEYWORD,binance 🚀 节点选择
+  - DOMAIN-KEYWORD,okx 🚀 节点选择
+  - DOMAIN-SUFFIX,okex.com 🚀 节点选择
+  - PROCESS-NAME,Binance.exe 🚀 节点选择
+  - DOMAIN-SUFFIX,gate.ac 🚀 节点选择
+  - DOMAIN-SUFFIX,gate.io 🚀 节点选择
+  - DOMAIN-KEYWORD,huobi 🚀 节点选择
+  - DOMAIN-KEYWORD,metamask 🚀 节点选择
+  - PROCESS-NAME,Huobi.exe 🚀 节点选择
+  - PROCESS-NAME,OKX.exe 🚀 节点选择
+  - DOMAIN-SUFFIX,bitfinex.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coinbase.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coingecko.com 🚀 节点选择
+  - DOMAIN-SUFFIX,coinmarketcap.com 🚀 节点选择
+  - DOMAIN-SUFFIX,etherscan.com 🚀 节点选择
+  - DOMAIN-SUFFIX,etherscan.io 🚀 节点选择
+  - DOMAIN-SUFFIX,kraken.com 🚀 节点选择
+  - DOMAIN-SUFFIX,mexc.com 🚀 节点选择
+  - DOMAIN-SUFFIX,oklink.com 🚀 节点选择
+  - DOMAIN-SUFFIX,opensea.io 🚀 节点选择
+  - DOMAIN-SUFFIX,tradingview.com 🚀 节点选择
+  - DOMAIN-SUFFIX,tronlink.org 🚀 节点选择
+
+  #telegram
+  - GEOSITE,telegram 🚀 节点选择
+  - GEOIP,Telegram 🚀 节点选择
+
+  - DOMAIN-SUFFIX,netflix.com 🌐 一般服务（国外）
+
+  - GEOSITE,category-ads-all,🛑 广告拦截
+  - GEOSITE,category-public-tracker 🧩 应用净化
+  - GEOSITE,private 🌏 国内直连
+  - GEOSITE,cn 🌏 国内直连
+  - GEOSITE,google 🔒 敏感服务（国外）
+  - GEOSITE,youtube 🔒 敏感服务（国外）
+  - GEOSITE,telegram 🔒 敏感服务（国外）
+
+  - MATCH 🐟 漏网之鱼
