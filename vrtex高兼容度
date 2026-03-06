@@ -1,0 +1,19 @@
+# ========== Vrtex Emergency Config (高兼容备用版) ==========
+[General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local
+dns-server = system, 223.5.5.5
+# 彻底关闭嗅探，减少解析阻力
+sniffing = false
+
+[Proxy Group]
+🚀 紧急代理 = select, ♻️ 自动选择, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇺🇲 美国节点, DIRECT
+♻️ 自动选择 = url-test, url = http://www.gstatic.com/generate_204, interval = 600, tolerance = 50, policy-regex-filter = .
+
+[Rule]
+# 仅保留最基础的直连
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list,DIRECT
+RULE-SET,https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list,DIRECT
+GEOIP,CN,DIRECT
+# 剩下的全部扔进代理，不做精细分流
+FINAL,🚀 紧急代理
