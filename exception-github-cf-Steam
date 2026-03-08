@@ -1,3 +1,7 @@
+# --- 单独加 ---
+docker.io
+ghcr.io
+
 # --- GitHub / Dev ---
 DOMAIN-SUFFIX,github.com,PROXY
 DOMAIN-SUFFIX,githubusercontent.com,PROXY
