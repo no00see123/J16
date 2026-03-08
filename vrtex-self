@@ -261,48 +261,58 @@ DOMAIN-SUFFIX,mtyun.com
 DOMAIN-SUFFIX,neixin.cn
 DOMAIN-SUFFIX,sankuai.com
 
-#微信
-# NAME: WeChat
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:18:25
-# DOMAIN: 8
-# DOMAIN-SUFFIX: 22
-# IP-ASN: 1
-# USER-AGENT: 2
-# TOTAL: 33
-DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
-DOMAIN,btrace.qq.com
-DOMAIN,dldir1.qq.com
-DOMAIN,slife.xy-asia.com
-DOMAIN,soup.v.qq.com
-DOMAIN,vweixinf.tc.qq.com
-DOMAIN,weixin110.qq.com
-DOMAIN,wup.imtt.qq.com
-DOMAIN-SUFFIX,iot-tencent.com
-DOMAIN-SUFFIX,lbs.gtimg.com
-DOMAIN-SUFFIX,map.qq.com
-DOMAIN-SUFFIX,qlogo.cn
-DOMAIN-SUFFIX,qpic.cn
-DOMAIN-SUFFIX,servicewechat.com
-DOMAIN-SUFFIX,tenpay.com
-DOMAIN-SUFFIX,up-hl.3g.qq.com
-DOMAIN-SUFFIX,vweixinthumb.tc.qq.com
+#微信（已优化）
+# ---- 基础域名 ----
 DOMAIN-SUFFIX,wechat.com
+DOMAIN-SUFFIX,weixin.com
+DOMAIN-SUFFIX,weixin.qq.com
 DOMAIN-SUFFIX,wechatlegal.net
 DOMAIN-SUFFIX,wechatos.net
 DOMAIN-SUFFIX,wechatpay.com
-DOMAIN-SUFFIX,weixin.com
-DOMAIN-SUFFIX,weixin.qq.com
 DOMAIN-SUFFIX,weixinbridge.com
 DOMAIN-SUFFIX,weixinsxy.com
-DOMAIN-SUFFIX,wx.gtimg.com
+# ---- 登录 / API ----
+DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
+DOMAIN,weixin110.qq.com
+DOMAIN,btrace.qq.com
+DOMAIN,wup.imtt.qq.com
+# ---- 微信客户端 ----
 DOMAIN-SUFFIX,wx.qq.com
-DOMAIN-SUFFIX,wxapp.tc.qq.com
 DOMAIN-SUFFIX,wxs.qq.com
-DOMAIN-SUFFIX,yun-hl.3g.qq.com
+DOMAIN-SUFFIX,wxapp.tc.qq.com
+DOMAIN-SUFFIX,vweixinf.tc.qq.com
+DOMAIN-SUFFIX,vweixinthumb.tc.qq.com
+# ---- 图片 / 静态资源 ----
+DOMAIN-SUFFIX,qlogo.cn
+DOMAIN-SUFFIX,qpic.cn
+DOMAIN-SUFFIX,wx.gtimg.com
+DOMAIN-SUFFIX,lbs.gtimg.com
+# ---- 地图 / 位置 ----
+DOMAIN-SUFFIX,map.qq.com
+# ---- 支付 ----
+DOMAIN-SUFFIX,tenpay.com
+# ---- 腾讯基础 CDN ----
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,myqcloud.com
+DOMAIN-SUFFIX,tencent-cloud.net
+DOMAIN-SUFFIX,tencentcloudapi.com
+# ---- 视频号 / 直播 CDN（关键）----
+DOMAIN-SUFFIX,txlivecdn.com
+DOMAIN-SUFFIX,txcloudcdn.com
+DOMAIN-SUFFIX,liveplay.myqcloud.com
+DOMAIN-SUFFIX,pull.myqcloud.com
+DOMAIN-SUFFIX,pull-flv.myqcloud.com
+DOMAIN-SUFFIX,pull-hls.myqcloud.com
+# ---- 兼容老规则 ----
+DOMAIN,dldir1.qq.com
+DOMAIN,slife.xy-asia.com
+DOMAIN,soup.v.qq.com
+# ---- IoT ----
+DOMAIN-SUFFIX,iot-tencent.com
+# ---- UA ----
 USER-AGENT,MicroMessenger*
 USER-AGENT,WeChat*
+# ---- ASN ----
 IP-ASN,132203,no-resolve
 
 #支付宝
