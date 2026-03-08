@@ -221,27 +221,30 @@ DOMAIN-SUFFIX,xhscdn.com
 DOMAIN-SUFFIX,xhscdn.net
 DOMAIN-SUFFIX,xiaohongshu.com
 
-#抖音
-# NAME: DouYin
-# AUTHOR: blackmatrix7
-# REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-06-06 09:18:50
-# DOMAIN: 2
-# DOMAIN-SUFFIX: 11
-# TOTAL: 13
+#抖音（优化过，视频+直播）
 DOMAIN,lf3-static.bytednsdoc.com
 DOMAIN,v5-dy-o-abtest.zjcdn.com
-DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,douyin.com
 DOMAIN-SUFFIX,douyincdn.com
 DOMAIN-SUFFIX,douyinpic.com
 DOMAIN-SUFFIX,douyinstatic.com
 DOMAIN-SUFFIX,douyinvod.com
 DOMAIN-SUFFIX,idouyinvod.com
+DOMAIN-SUFFIX,amemv.com
+DOMAIN-SUFFIX,snssdk.com
+DOMAIN-SUFFIX,pstatp.com
 DOMAIN-SUFFIX,ixigua.com
 DOMAIN-SUFFIX,ixiguavideo.com
-DOMAIN-SUFFIX,pstatp.com
-DOMAIN-SUFFIX,snssdk.com
 DOMAIN-SUFFIX,toutiao.com
+# 字节 CDN / 直播流
+DOMAIN-SUFFIX,bytecdn.cn
+DOMAIN-SUFFIX,byteimg.com
+DOMAIN-SUFFIX,byteimg.cn
+DOMAIN-SUFFIX,bytecdntp.com
+# 字节调度 / DNS
+DOMAIN-SUFFIX,bytedance.com
+DOMAIN-SUFFIX,bytedns.net
+DOMAIN-SUFFIX,bytednsdoc.com
 
 #美团
 # NAME: MeiTuan
