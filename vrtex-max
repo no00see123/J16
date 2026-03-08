@@ -1,4 +1,5 @@
 #shadowsockt
+小红书/抖音/比例/微信/支付宝/高德地图/视频号/咸鱼/转转/百度/京东/淘宝/音乐/
 #小红书
 # NAME: XiaoHongShu
 # AUTHOR: blackmatrix7
@@ -992,4 +993,31 @@ IP-CIDR,8.128.0.0/10,no-resolve
 IP-CIDR,8.208.0.0/12,no-resolve
 
 #快手
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Shadowrocket/KuaiShou/KuaiShou.list,DIRECT
+# KuaiShou Lite (<30)
+DOMAIN-SUFFIX,kuaishou.com
+DOMAIN-SUFFIX,ksapisrv.com
+DOMAIN-SUFFIX,yximgs.com
+DOMAIN-SUFFIX,kspkg.com
+DOMAIN-SUFFIX,ksyun.com
+DOMAIN-SUFFIX,ksyuncdn.com
+DOMAIN-SUFFIX,ks-cdn.com
+DOMAIN-SUFFIX,ksyun-kencdn.com
+DOMAIN-SUFFIX,ksyungslb.com
+DOMAIN-SUFFIX,ksyunv5.com
+DOMAIN-SUFFIX,gifshow.com
+DOMAIN-SUFFIX,gifshow.cn
+DOMAIN-SUFFIX,kwai.com
+DOMAIN-SUFFIX,kwai.net
+DOMAIN-SUFFIX,kwimgs.com
+DOMAIN-SUFFIX,kslive.com
+DOMAIN-SUFFIX,kslive.cn
+DOMAIN-SUFFIX,smilevideo.cn
+DOMAIN-SUFFIX,smilevideo.com
+DOMAIN-SUFFIX,bdurl.net
+DOMAIN-SUFFIX,bdstatic.com
+DOMAIN-KEYWORD,kuaishou
+DOMAIN-KEYWORD,ksapisrv
+DOMAIN-KEYWORD,gifshow
+USER-AGENT,Kuaishou*
+USER-AGENT,kwai*
+USER-AGENT,gifshow*
