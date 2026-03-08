@@ -1,0 +1,54 @@
+# --- GitHub / Dev ---
+DOMAIN-SUFFIX,github.com,PROXY
+DOMAIN-SUFFIX,githubusercontent.com,PROXY
+DOMAIN-SUFFIX,githubassets.com,PROXY
+DOMAIN-SUFFIX,github.io,PROXY
+DOMAIN-SUFFIX,githubapp.com,PROXY
+DOMAIN-SUFFIX,github.dev,PROXY
+DOMAIN-SUFFIX,ghcr.io,PROXY
+DOMAIN-SUFFIX,raw.githubusercontent.com,PROXY
+DOMAIN-SUFFIX,objects.githubusercontent.com,PROXY
+DOMAIN-SUFFIX,gitlab.com,PROXY
+DOMAIN-SUFFIX,gitlabusercontent.com,PROXY
+DOMAIN-SUFFIX,docker.com,PROXY
+DOMAIN-SUFFIX,docker.io,PROXY
+DOMAIN-SUFFIX,dockerusercontent.com,PROXY
+DOMAIN,registry-1.docker.io,PROXY
+
+# --- Cloudflare ---
+DOMAIN-SUFFIX,cloudflare.com,PROXY
+DOMAIN-SUFFIX,cloudflare-dns.com,PROXY
+DOMAIN-SUFFIX,cloudflareinsights.com,PROXY
+DOMAIN-SUFFIX,workers.dev,PROXY
+DOMAIN-SUFFIX,pages.dev,PROXY
+
+# --- Steam / Game Platforms ---
+DOMAIN-SUFFIX,steampowered.com,PROXY
+DOMAIN-SUFFIX,steamcommunity.com,PROXY
+DOMAIN-SUFFIX,steamstatic.com,PROXY
+DOMAIN-SUFFIX,steamcontent.com,PROXY
+DOMAIN-SUFFIX,steamserver.net,PROXY
+DOMAIN-SUFFIX,steamusercontent.com,PROXY
+DOMAIN-SUFFIX,epicgames.com,PROXY
+DOMAIN-SUFFIX,epicgamescdn.com,PROXY
+DOMAIN-SUFFIX,riotgames.com,PROXY
+DOMAIN-SUFFIX,playstation.com,PROXY
+DOMAIN-SUFFIX,xboxlive.com,PROXY
+DOMAIN-SUFFIX,nintendo.net,PROXY
+
+# --- Global Cloud / SaaS ---
+DOMAIN-SUFFIX,aws.dev,PROXY
+DOMAIN-SUFFIX,amazonaws.com,PROXY
+DOMAIN-SUFFIX,azure.com,PROXY
+DOMAIN-SUFFIX,microsoftonline.com,PROXY
+DOMAIN-SUFFIX,vercel.app,PROXY
+DOMAIN-SUFFIX,vercel.com,PROXY
+DOMAIN-SUFFIX,notion.so,PROXY
+DOMAIN-SUFFIX,notion.site,PROXY
+DOMAIN-SUFFIX,openai.com,PROXY
+DOMAIN-SUFFIX,chatgpt.com,PROXY
+DOMAIN-SUFFIX,anthropic.com,PROXY
+DOMAIN-SUFFIX,claude.ai,PROXY
+
+
+
