@@ -278,7 +278,8 @@ DOMAIN-SUFFIX,neixin.cn
 DOMAIN-SUFFIX,meituan.net
 DOMAIN-SUFFIX,sankuai.com
 
-#微信（优化 + 视频号直播）
+#微信（最终版，含视频号直播）
+# ----------------------
 # 基础域名
 DOMAIN-SUFFIX,wechat.com
 DOMAIN-SUFFIX,weixin.com
@@ -293,6 +294,7 @@ DOMAIN-SUFFIX,weixinsxy.com
 DOMAIN-SUFFIX,wx.qq.com
 DOMAIN-SUFFIX,wxs.qq.com
 DOMAIN-SUFFIX,wxapp.tc.qq.com
+DOMAIN,wst.wxapp.tc.qq.com
 DOMAIN-SUFFIX,vweixinf.tc.qq.com
 DOMAIN-SUFFIX,vweixinthumb.tc.qq.com
 # ----------------------
@@ -301,6 +303,9 @@ DOMAIN,apd-pcdnwxlogin.teg.tencent-cloud.net
 DOMAIN,weixin110.qq.com
 DOMAIN,btrace.qq.com
 DOMAIN,wup.imtt.qq.com
+DOMAIN,dns.weixin.qq.com.cn
+DOMAIN,paydns.weixin.qq.com
+DOMAIN,szshort.pay.weixin.qq.com
 # ----------------------
 # 图片 / 静态资源
 DOMAIN-SUFFIX,qlogo.cn
@@ -311,11 +316,12 @@ DOMAIN-SUFFIX,res.wx.qq.com
 # ----------------------
 # 地图
 DOMAIN-SUFFIX,map.qq.com
+DOMAIN,lbs.map.qq.com
 # ----------------------
 # 支付
 DOMAIN-SUFFIX,tenpay.com
 DOMAIN-SUFFIX,pay.weixin.qq.com
-DOMAIN-SUFFIX,paydns.weixin.qq.com
+DOMAIN,report.trade.weixin.qq.com
 # ----------------------
 # 腾讯基础 CDN
 DOMAIN-SUFFIX,gtimg.com
@@ -324,22 +330,46 @@ DOMAIN-SUFFIX,tencent-cloud.net
 DOMAIN-SUFFIX,tencentcloudapi.com
 # ----------------------
 # 视频号调度
-DOMAIN-SUFFIX,szextshort.weixin.qq.com
-DOMAIN-SUFFIX,szminorshort.weixin.qq.com
-DOMAIN-SUFFIX,szshort.weixin.qq.com
+DOMAIN,szextshort.weixin.qq.com
+DOMAIN,szminorshort.weixin.qq.com
+DOMAIN,szshort.weixin.qq.com
 # ----------------------
-# 视频号 CDN
+# 视频号 / Finder 视频 CDN
 DOMAIN-SUFFIX,video.qq.com
+DOMAIN,finder.video.qq.com
+DOMAIN,findervideo.qq.com
+DOMAIN,finderyz.video.qq.com
+DOMAIN,findervp.video.qq.com
+DOMAIN,findertt.video.qq.com
+DOMAIN,finderpdd.video.qq.com
+DOMAIN-KEYWORD,finder
 # ----------------------
 # 视频号直播 CDN
 DOMAIN-SUFFIX,qlivecdn.com
 DOMAIN-SUFFIX,tlivesource.com
+DOMAIN-SUFFIX,tlivedns.com
 DOMAIN-SUFFIX,wxqcloud.qq.com
+DOMAIN,wx-channels-webrtc-dk.qlivecdn.com
+DOMAIN,mlvbdc.live.tlivesource.com
+DOMAIN,webrtc-signal-scheduler.tlivesource.com
+DOMAIN,sdkconfig.tlivedns.com
+DOMAIN,voipfinderliveplaythird.wxqcloud.qq.com
+DOMAIN,csycdn.flv.wxqcloud.qq.com
+DOMAIN,hscdn.flv.wxqcloud.qq.com
+# ----------------------
+# WebRTC / 实时信令
+DOMAIN-SUFFIX,rtc.qq.com
+DOMAIN-SUFFIX,webrtc.qq.com
 # ----------------------
 # 兼容组件
 DOMAIN,dldir1.qq.com
 DOMAIN,slife.xy-asia.com
 DOMAIN,soup.v.qq.com
+DOMAIN,up-hl.3g.qq.com
+DOMAIN,yun-hl.3g.qq.com
+DOMAIN,wx.music.tc.qq.com
+DOMAIN,qqvideo.tc.qq.com
+DOMAIN,szmg.qq.com
 # ----------------------
 # IoT
 DOMAIN-SUFFIX,iot-tencent.com
