@@ -1,5 +1,5 @@
 #shadowsockt
-银行/小红书/抖音/美团/微信/支付宝/高德/音乐/视频号/咸鱼/转转/淘宝/京东/bilibili/百度/快手
+银行/小红书/抖音/美团/微信/支付宝/高德/音乐/拼多多/滴滴/知乎/微博/携程/飞猪/12306/视频号/咸鱼/转转/淘宝/京东/bilibili/百度/快手
 #银行
 #中国银行-boc
 #中国建设银行-ccb
@@ -377,6 +377,39 @@ USER-AGENT,QQMusic*
 USER-AGENT,NeteaseMusic*
 USER-AGENT,KugouMusic*
 USER-AGENT,KuwoMusic*
+
+# --- 拼多多 ---
+DOMAIN-SUFFIX,pinduoduo.com
+DOMAIN-SUFFIX,pinduoduo.net
+DOMAIN-SUFFIX,pddpic.com
+DOMAIN-SUFFIX,yangkeduo.com
+
+# --- 滴滴 ---
+DOMAIN-SUFFIX,didiglobal.com
+DOMAIN-SUFFIX,didi.cn
+DOMAIN-SUFFIX,xiaojukeji.com
+
+# --- 知乎 ---
+DOMAIN-SUFFIX,zhihu.com
+DOMAIN-SUFFIX,zhimg.com
+
+# --- 微博 ---
+DOMAIN-SUFFIX,weibo.com
+DOMAIN-SUFFIX,weibocdn.com
+DOMAIN-SUFFIX,sinaimg.cn
+
+# --- 携程 ---
+DOMAIN-SUFFIX,ctrip.com
+DOMAIN-SUFFIX,ctrip.cn
+DOMAIN-SUFFIX,trip.com
+
+# --- 飞猪 ---
+DOMAIN-SUFFIX,fliggy.com
+
+# --- 12306 ---
+DOMAIN-SUFFIX,12306.cn
+DOMAIN-SUFFIX,china-railway.com.cn
+DOMAIN-SUFFIX,rails.cn
 
 #视频号
 # NAME: TencentVideo-Lite
